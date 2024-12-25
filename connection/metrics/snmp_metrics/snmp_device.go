@@ -17,9 +17,9 @@ func GetSNMPDeviceMetrics(snmpClient *clients.SNMPClient) (*SNMPDeviceMetrics, e
 	// Define the OIDs to fetch the metrics
 	oids := map[string]*interface{}{
 		"1.3.6.1.2.1.1.3.0": &metrics.StartedTime,
-		"1.3.6.1.2.1.1.1.0": &metrics.SystemName,
+		"1.3.6.1.2.1.1.5.0": &metrics.SystemName,
 		"1.3.6.1.2.1.1.6.0": &metrics.SystemLocation,
-		"1.3.6.1.2.1.1.2.0": &metrics.SystemDesc,
+		"1.3.6.1.2.1.1.1.0": &metrics.SystemDesc,
 	}
 
 	for oid, field := range oids {

@@ -11,7 +11,7 @@ type Credential struct {
 
 type Input struct {
 	EventType       string       `json:"event.type"`
-	DeviceType      string       `json:"device.type"`
+	DeviceType      string       `json:"device_type"`
 	IP              string       `json:"ip"`
 	Port            int          `json:"port"`
 	Credentials     []Credential `json:"discovery.credential.profiles"`

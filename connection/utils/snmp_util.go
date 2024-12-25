@@ -12,7 +12,7 @@ import (
 func DiscoverSNMP(input models.Input) (string, error) {
 
 	for _, profile := range input.Credentials {
-		snmpClient, err := clients.ConnectSNMP(input.IP, input.Port, profile.Name, profile.Password)
+		snmpClient, err := clients.ConnectSNMP(input.IP, input.Port, profile.Community, profile.Version)
 		if err != nil {
 
 			continue //go to next profile
