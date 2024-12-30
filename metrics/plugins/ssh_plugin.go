@@ -77,11 +77,13 @@ func PollSSH(input map[string]interface{}) (map[string]interface{}, error) {
 
 	ip := input["ip"].(string)
 
+	port := input["port"].(float64)
+
 	name := input["user.name"].(string)
 
 	password := input["user.password"].(string)
 
-	sshClient, err := clients.ConnectSSH(ip, 22, name, password)
+	sshClient, err := clients.ConnectSSH(ip, int(port), name, password)
 
 	if err != nil {
 		return nil, err

@@ -81,7 +81,15 @@ func DiscoverSNMP(input map[string]interface{}) (map[string]interface{}, error) 
 
 func PollSNMP(input map[string]interface{}) (map[string]interface{}, error) {
 
-	snmpClient, err := clients.ConnectSNMP(input["ip"].(string), 161, input["community"].(string), input["version"].(string))
+	ip := input["ip"].(string)
+
+	port := input["port"].(float64)
+
+	community := input["community"].(string)
+
+	version := input["version"].(string)
+
+	snmpClient, err := clients.ConnectSNMP(ip, int(port), community, version)
 
 	if err != nil {
 		return nil, err
