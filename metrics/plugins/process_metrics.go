@@ -19,7 +19,7 @@ func GetProcessMetrics(sshClient *clients.SSHClient) (map[string]interface{}, er
 		result, err := sshClient.RunCommand(cmd)
 		if err != nil {
 			results[key] = "ERROR"
-			continue // Log error and move to the next command
+			continue // Skip errors
 		}
 		results[key] = utils.ParseResult(result)
 	}
