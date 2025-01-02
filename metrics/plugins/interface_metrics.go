@@ -57,11 +57,13 @@ func GetSNMPInterfaceMetrics(snmpClient *clients.SNMPClient) (map[string]interfa
 			}
 
 			// Assign the value for the specific interface index
-			for _, variable := range result.Variables {
+			if len(result.Variables) > 0 {
+				variable := result.Variables[0]
 				if variable.Value != nil {
 					metricData[strconv.Itoa(i)] = variable.Value
 				}
 			}
+
 		}
 
 		if len(metricData) > 0 {

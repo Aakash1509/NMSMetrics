@@ -2,6 +2,7 @@ package plugins
 
 import (
 	"Plugin/metrics/clients"
+	"Plugin/metrics/utils"
 	"fmt"
 	"strconv"
 )
@@ -28,11 +29,11 @@ func GetSNMPDeviceMetrics(snmpClient *clients.SNMPClient) (map[string]interface{
 		for _, variable := range response.Variables {
 			switch value := variable.Value.(type) {
 			case string:
-				results[key] = value
+				results[key] = utils.ParseResult(value)
 			case uint32:
-				results[key] = strconv.Itoa(int(value))
+				results[key] = utils.ParseResult(strconv.Itoa(int(value)))
 			case []uint8:
-				results[key] = string(value)
+				results[key] = utils.ParseResult(string(value))
 			default:
 				results[key] = fmt.Sprintf("Unsupported type: %T", value) // Handle unexpected types
 			}
